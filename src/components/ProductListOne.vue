@@ -2,8 +2,8 @@
     <div id="product-list-one">
         <h2>Product List One</h2>
     <ul>
-       <li v-for="product in products" :key="product.name"><span class="name">{{ product.name }}</span>
-                <span class="price">£{{ product.price }}</span></li>
+       <li v-for="product in saleProducts" :key="product.name"><span class="name">{{ product.name }}</span>
+                <span class="price"> £{{ product.price }}</span></li>
     </ul>
     </div>
 </template>
@@ -12,6 +12,9 @@ export default {
     computed: {
         products(){
             return this.$store.state.products
+        },
+        saleProducts(){
+            return this.$store.getters.saleProducts
         }
     }
 }
@@ -22,6 +25,8 @@ export default {
     box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
     margin-bottom: 30px;
     padding: 10px 20px;
+    margin-top: 0px;
+
 }
 #product-list-one ul{
     padding: 0;
