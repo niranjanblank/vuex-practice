@@ -5,9 +5,13 @@
        <li v-for="product in saleProducts" :key="product.name"><span class="name">{{ product.name }}</span>
                 <span class="price"> £{{ product.price }}</span></li>
     </ul>
+    <button v-on:click="reducePrice(4)">Reduce Price</button>
     </div>
 </template>
 <script>
+// import {mapActions} from 'vuex'
+// import {mapGetters} from 'vuex'
+
 export default {
     computed: {
         products(){
@@ -16,7 +20,14 @@ export default {
         saleProducts(){
             return this.$store.getters.saleProducts
         }
+    },
+    methods: {
+        reducePrice(amount){
+            
+            this.$store.dispatch('reducePrice',amount) // dispatch(action_name, other_parameter_we_want_to_pass)
+            }
     }
+    
 }
 </script>
 <style scoped>

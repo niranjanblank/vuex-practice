@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 
 export const store = new Vuex.Store({
+    strict: true,
     state: {
         // Data that can be used by other components
         products: [
@@ -24,6 +25,24 @@ export const store = new Vuex.Store({
                     }
                 })
                 return saleProducts
+        }
+    },
+    mutations: {
+        reducePrice: (state,payload) =>{
+           
+                state.products.forEach(product =>{
+                    product.price -= payload
+                })
+            
+            
+        }
+    },
+    
+    actions: {
+        reducePrice: (context,payload) =>{
+            setTimeout(()=>{
+                context.commit('reducePrice',payload)
+            },3000)
         }
     }
 })
