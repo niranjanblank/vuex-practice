@@ -9,23 +9,27 @@
     </div>
 </template>
 <script>
-// import {mapActions} from 'vuex'
-// import {mapGetters} from 'vuex'
+import {mapActions} from 'vuex'
+import {mapGetters} from 'vuex'
 
 export default {
     computed: {
         products(){
             return this.$store.state.products
         },
-        saleProducts(){
-            return this.$store.getters.saleProducts
-        }
+        ...mapGetters([
+        'saleProducts' //others can be added seperated by comma
+        ])
     },
     methods: {
-        reducePrice(amount){
+
+        ...mapActions([
+            'reducePrice'
+        ])
+        // reducePrice(amount){
             
-            this.$store.dispatch('reducePrice',amount) // dispatch(action_name, other_parameter_we_want_to_pass)
-            }
+        //     this.$store.dispatch('reducePrice',amount) // dispatch(action_name, other_parameter_we_want_to_pass)
+        //     }
     }
     
 }
